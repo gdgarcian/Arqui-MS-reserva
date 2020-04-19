@@ -14,7 +14,7 @@ mongoose.connect('mongodb://mongo:27017/reserva', {
   .catch(err => console.log(err));
 
 //settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4001);
 
 //Middlewares
 app.use(morgan('dev'));
