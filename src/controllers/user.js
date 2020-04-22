@@ -38,7 +38,8 @@ module.exports = {
 		const { userId } = req.params;
 		const newUser = req.body;
 		const oldUser = await User.findByIdAndUpdate(userId, newUser);
-		res.status(200).json({success: true});
+		newUser._id = oldUser._id;
+		res.status(200).json(newUser);
 	},
 
 	getUserReserva: async (req, res, next) => {
@@ -51,12 +52,14 @@ module.exports = {
 
 	newUserReserva: async (req, res, next) => {
 		const { userId } = req.params;
+		console.log("userID ", userId);
+		console.log(req.body);
 		const newReserva = new Reserva(req.body);
 		const user = await User.findById(userId);
 		newReserva.user = user;
 		await newReserva.save();
 		user.reserva.push(newReserva);
 		await user.save();
-		res.status(201).json(newReserva);
+		res.status(200).json(newReserva);
 	}
 };
