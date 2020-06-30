@@ -8,7 +8,7 @@ const app = express();
 const usersRoutes = require('./routes/user');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://arqui-ms-reserva_mongo_1:27017/reserva', {
+mongoose.connect('mongodb://35.239.72.32:31523/reserva', {
   useMongoClient: true
 }).then(db => console.log('db is connected'))
   .catch(err => console.log(err));
